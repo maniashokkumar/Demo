@@ -1,0 +1,29 @@
+<header>
+  <nav class="navbar">
+    <div class="logo">
+      <span class="logo-icon">E</span>
+      <!-- <span class="logo-text">Edu<span class="highlight">STEM</span><span class="academy">rick</span></span> -->
+      <span class="logo-text">Edu<span class="academy">rick</span></span>
+    </div>
+    <ul class="nav-links" [class.active]="menuOpen">
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Courses</a></li>
+      <li><a href="#">Testimonials</a></li>
+      <li><a href="#">FAQ</a></li>
+    </ul>
+    <button class="waitlist-btn">Join Class</button>
+    <button class="menu-btn" (click)="toggleMenu()">
+      <span *ngIf="!menuOpen">&#9776;</span>
+      <span *ngIf="menuOpen">&#10005;</span>
+    </button>
+  </nav>
+  <div class="mobile-menu" *ngIf="menuOpen">
+    <ul class="mobile-nav-links">
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Courses</a></li>
+      <li><a href="#">Testimonials</a></li>
+      <li><a href="#">FAQ</a></li>
+    </ul>
+    <button class="mobile-waitlist-btn">Join Waitlist</button>
+  </div>
+</header>
