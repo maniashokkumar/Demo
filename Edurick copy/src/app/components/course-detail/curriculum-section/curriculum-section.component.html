@@ -1,0 +1,31 @@
+<section class="curriculum-section">
+  <div class="container">
+    <h2 class="section-title">Course Curriculum</h2>
+    <div class="curriculum-grid">
+      <details *ngFor="let tier of pricingTiers">
+        <summary>{{ tier.name }} Curriculum</summary>
+        <div class="module-list">
+          <div class="module" *ngFor="let module of tier.modules; let i = index">
+            <div class="module-icon">
+              <i class="fas" [ngClass]="{
+                'fa-robot': i === 0,
+                'fa-brain': i === 1,
+                'fa-microchip': i === 2
+              }"></i>
+            </div>
+            <div class="module-content">
+              <h4>{{ module }}</h4>
+              <p>The ability of our brain to develop new neuron connections and learn new things is the greatest before the age of seven years. Starting young helps children develop their mindset in a way that will help them in the long term. Children will be able to nurture key skills like decision-making, logical thinking, creative problem solving and group coordination. Early exposure to our curated curriculum, along with certified early childhood teaching experts, will help kids in developing Academic and Emotional Intelligence.</p>
+              <a [href]="'assets/pdfs/' + module.toLowerCase().split(' ').join('-') + '.pdf'" 
+                 target="_blank" 
+                 class="view-more">
+                <i class="fas fa-file-pdf"></i>
+                View More
+              </a>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section> 

@@ -1,0 +1,137 @@
+@import '../../../styles/variables';
+@import '../../../styles/theme';
+
+// Variables
+$primary-color: #FF6B00;
+$text-color: #333333;
+$light-text: #666666;
+$white: #ffffff;
+$light-bg: #f8f9fa;
+$box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+$border-radius: 12px;
+$transition: all 0.3s ease;
+
+// Mixins
+@mixin container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// Global Styles
+.container {
+  @include container;
+}
+
+// Section Title Style
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: $text-color;
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: $primary-color;
+    border-radius: 2px;
+  }
+}
+
+// FAQ Section
+.faq-section {
+  background: $light-bg;
+  padding: $section-padding-y 0;
+
+  .container {
+    @include container;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: $text-color;
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: $primary-color;
+      border-radius: 2px;
+    }
+  }
+
+  .faq-grid {
+    margin-top: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
+    details {
+      margin-bottom: 15px;
+      background: $white;
+      border-radius: $border-radius;
+      overflow: hidden;
+      box-shadow: $box-shadow;
+      transition: $transition;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      summary {
+        padding: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        position: relative;
+        list-style: none;
+
+        &:hover {
+          background: $light-bg;
+        }
+
+        &::-webkit-details-marker {
+          display: none;
+        }
+
+        &:after {
+          content: '+';
+          position: absolute;
+          right: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 1.5rem;
+          color: $primary-color;
+          transition: $transition;
+        }
+      }
+
+      &[open] summary:after {
+        content: '-';
+      }
+
+      p {
+        padding: 20px;
+        margin: 0;
+        border-top: 1px solid $light-bg;
+        color: $light-text;
+        line-height: 1.6;
+      }
+    }
+  }
+} 

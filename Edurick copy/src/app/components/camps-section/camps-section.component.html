@@ -1,0 +1,91 @@
+<!-- Camps Section -->
+<section id="camps" class="camps" *ngIf="campsData">
+    <div class="container">
+      <div class="section-header">
+        <h2>{{ campsData.sectionTitle }}</h2>
+        <div class="grade-filter">
+          <button 
+            *ngFor="let grade of campsData.grades"
+            [class.active]="selectedGrade === grade"
+            (click)="selectGrade(grade)"
+            class="grade-button">
+            {{ grade }}
+          </button>
+        </div>
+      </div>
+      <!-- [ngClass]="{'coding': camp.title === 'Coding Camp', 'entrepreneur': camp.title === 'Entrepreneur\'s Camp'}" -->
+      <!-- Camps Grid -->
+      <div class="camps-grid">
+        <div class="camp-card coding" *ngFor="let camp of campsData.camps" >
+          <div class="card-main-content">
+            <div class="camp-image">
+              <img [src]="camp.image" [alt]="camp.title">
+              <div class="price-tag">
+                <div class="original-price">{{ camp.originalPrice }}</div>
+                <div class="current-price">{{ camp.currentPrice }}</div>
+              </div>
+            </div>
+  
+            <div class="camp-content">
+              <h3>{{ camp.title }}</h3>
+              <div class="skills">
+                <span class="skill-tag" *ngFor="let skill of camp.skills">{{ skill }}</span>
+              </div>
+              <p class="description">{{ camp.description }}</p>
+              <div class="duration">
+                <i class="far fa-clock"></i>
+                {{ camp.duration }}
+              </div>
+              <button class="know-more-button" (click)="toggleLessons(camp)">
+                <span>Know More</span>
+                <i class="fas fa-chevron-right" [class.expanded]="camp.showLessons"></i>
+              </button>
+            </div>
+  
+            <div class="camp-dates">
+              <div class="date-slot" *ngFor="let slot of camp.dateSlots">
+                <div class="date-info">{{ slot.dateInfo }}</div>
+                <button class="enroll-button" (click)="openRegistrationPopup(camp, slot.dateInfo)">Enroll Now</button>
+              </div>
+            </div>
+          </div>
+  
+          <div class="lessons-section" *ngIf="camp.showLessons">
+            <h3 class="lessons-header">Lessons</h3>
+            <div class="lessons-timeline">
+              <div class="lesson-item" *ngFor="let lesson of camp.lessons">
+                <div class="lesson-header" (click)="toggleLesson(lesson)">
+                  <div class="day-title">
+                    <span class="day">Day {{lesson.day}}</span>
+                    <span class="title">{{lesson.title}}</span>
+                  </div>
+                  <i  class="fas fa-chevron-down expand-icon" [class.expanded]="lesson?.expanded"></i>
+                </div>
+                <div class="lesson-content" [class.expanded]="lesson?.expanded">
+                  <div class="lesson-image">
+                    <img [src]="lesson.image" [alt]="lesson.title">
+                  </div>
+                  <div class="lesson-details">
+                    <p class="lesson-description">{{lesson.description}}</p>
+                    <div class="lesson-tags">
+                      <span class="tag" *ngFor="let tag of lesson.tags">{{tag}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+  <app-registration-popup
+    [isOpen]="isRegistrationPopupOpen"
+    [courseName]="selectedCamp?.title"
+    [courseDescription]="selectedCamp?.description"
+    [selectedDate]="selectedDate"
+    [originalPrice]="selectedCamp?.originalPrice"
+    [currentPrice]="selectedCamp?.currentPrice"
+    (close)="closeRegistrationPopup()"
+    (submit)="handleRegistrationSubmit($event)">
+  </app-registration-popup>

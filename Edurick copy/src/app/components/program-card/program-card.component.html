@@ -1,0 +1,16 @@
+<div class="program-card">
+  <div class="program-image">
+    <img [src]="program.image" [alt]="program.title">
+    <div class="program-icon">
+      <i [class]="program.icon"></i>
+    </div>
+  </div>
+  <div class="program-content">
+    <h3>{{ program.title }}</h3>
+    <p>{{ program.description }}</p>
+    <a [routerLink]="['/course', program.id]" class="explore-button">
+      Explore Now
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</div> 

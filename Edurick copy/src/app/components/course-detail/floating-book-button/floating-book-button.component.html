@@ -1,0 +1,14 @@
+<button 
+  class="floating-book-button" 
+  [class.visible]="isVisible"
+  (click)="openRegistrationPopup()">
+  Book Now
+</button>
+
+<app-registration-popup
+  [isOpen]="isRegistrationPopupOpen"
+  [courseName]="courseDetails.name"
+  [courseDescription]="courseDetails.description"
+  (close)="closeRegistrationPopup()"
+  (submit)="handleRegistrationSubmit($event)">
+</app-registration-popup> 

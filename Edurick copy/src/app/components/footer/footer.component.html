@@ -1,0 +1,78 @@
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Quick Links Section -->
+    <div class="footer-section">
+      <h3>{{footerData.quickLinks.title}}</h3>
+      <ul>
+        <li *ngFor="let link of footerData.quickLinks.links">
+          <a [routerLink]="link.link">{{link.title}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Legal Section -->
+    <div class="footer-section">
+      <h3>{{footerData.legal.title}}</h3>
+      <ul>
+        <li *ngFor="let link of footerData.legal.links">
+          <a [routerLink]="link.link">{{link.title}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="footer-section">
+      <h3>{{footerData.contact.title}}</h3>
+      <ul class="contact-info">
+        <li>
+          <a [href]="'tel:' + footerData.contact.info.phone">
+            <i class="fas fa-phone"></i> {{footerData.contact.info.phone}}
+          </a>
+        </li>
+        <li>
+          <a [href]="'mailto:' + footerData.contact.info.email">
+            <i class="fas fa-envelope"></i> {{footerData.contact.info.email}}
+          </a>
+        </li>
+        <li>
+          <i class="fas fa-map-marker-alt"></i> {{footerData.contact.info.address}}
+        </li>
+      </ul>
+    </div>
+
+    <!-- Newsletter Section -->
+    <div class="footer-section newsletter">
+      <h3>{{footerData.newsletter.title}}</h3>
+      <p>{{footerData.newsletter.description}}</p>
+      <form (ngSubmit)="onSubmit()" #newsletterForm="ngForm">
+        <div class="input-group">
+          <input 
+            type="email" 
+            name="email" 
+            [(ngModel)]="email" 
+            placeholder="Enter your email"
+            required
+            email
+          >
+          <button type="submit" [disabled]="!newsletterForm.form.valid">
+            Subscribe
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="social-links">
+      <a 
+        *ngFor="let social of footerData.socialLinks"
+        [href]="social.link" 
+        [attr.aria-label]="social.ariaLabel">
+        <i [class]="social.icon"></i>
+      </a>
+    </div>
+    <p class="copyright">
+      © {{currentYear}} Edurick. All rights reserved.
+    </p>
+  </div>
+</footer> 

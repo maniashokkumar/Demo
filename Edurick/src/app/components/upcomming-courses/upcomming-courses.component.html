@@ -1,38 +1,51 @@
-<section class="nav-cards">
-    <h2>Upcoming Courses</h2>
-    <p>Explore our curriculum designed for learners of all levels, from beginners to advanced students.</p>
-    <div class="cards-container">
-        <div class="card">
-            <span class="badge beginner">BEGINNER</span>
-            <h3>Python Programming Fundamentals</h3>
-            <p>Learn the basics of Python programming with hands-on exercises and real-world projects.</p>
-            <p>⭐️⭐️⭐️⭐️☆ (4.5) - 8 weeks</p>
-            <button class="register-btn">Register</button>
+<!-- courses-grid.component.html -->
+<div class="container">
+  <div class="courses-container">
+    <div class="courses-grid">
+      <!-- Course Card 1 -->
+      <div class="course-card">
+        <div class="card-header green">
+          <div class="header-content">
+            <img height="180" width="375" src="https://www.k12.com/wp-content/uploads/2025/03/ReadingMonth_HomepageTile.png" alt="Fox mascot" class="mascot-image">
+            <div class="date-tag">Starts 2nd April</div>
+          </div>
         </div>
-        <div class="card">
-            <span class="badge intermediate">INTERMEDIATE</span>
-            <h3>Python Programming Fundamentals</h3>
-            <p>Learn the basics of Python programming with hands-on exercises and real-world projects.</p>
-            <p>⭐️⭐️⭐️⭐️☆ (4.5) - 8 weeks</p>
-            <button class="register-btn">Register</button>
-        </div>   <div class="card">
-            <span class="badge intermediate">INTERMEDIATE</span>
-            <h3>Python Programming Fundamentals</h3>
-            <p>Learn the basics of Python programming with hands-on exercises and real-world projects.</p>
-            <p>⭐️⭐️⭐️⭐️☆ (4.5) - 8 weeks</p>
-            <button class="register-btn">Register</button>
-        </div>   <div class="card">
-            <span class="badge beginner">BEGINNER</span>
-            <h3>Python Programming Fundamentals</h3>
-            <p>Learn the basics of Python programming with hands-on exercises and real-world projects.</p>
-            <p>⭐️⭐️⭐️⭐️☆ (4.5) - 8 weeks</p>
-            <button class="register-btn">Register</button>
-        </div>   <div class="card">
-            <span class="badge advanced">ADVANCED</span>
-            <h3>Python Programming Fundamentals</h3>
-            <p>Learn the basics of Python programming with hands-on exercises and real-world projects.</p>
-            <p>⭐️⭐️⭐️⭐️☆ (4.5) - 8 weeks</p>
-            <button class="register-btn">Register</button>
-        </div> 
+        <div class="card-body">
+          <h2>🚀 Our 10-Day Summer Robotics Program!</h2>
+          <p>Learn to build and program exciting robotic projects through hands-on training and expert guidance. Designed for curious minds eager to explore, create, and solve real-world problems with technology.</p>
+          <a routerLink="courses/robotics" class="card-link">Find Lots of Reading Fun <span class="arrow-icon">></span></a>
+        </div>
+      </div>
+      
+      <!-- Course Card 2 -->
+      <div class="course-card">
+        <div class="card-header blue">
+          <div class="header-content">
+            <img height="180" width="375" src="https://img.freepik.com/free-photo/father-son-making-robot_23-2148863386.jpg?" alt="Tutoring" class="mascot-image">
+            <div class="date-tag">Starts 15th April</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h2>Focused and Flexible One-to-One Tutoring</h2>
+          <p>Get your child the support they need with personalized tutoring sessions led by certified teachers. Take the stress out of school.</p>
+          <a routerLink="courses/robotics" class="card-link">Book a Session Today <span class="arrow-icon">></span></a>
+        </div>
+      </div>
+      
+      <!-- Course Card 3 -->
+      <div class="course-card">
+        <div class="card-header dark-blue">
+          <div class="header-content">
+            <img height="180" width="375" src="https://img.freepik.com/free-photo/father-son-making-robot_23-2148863386.jpg" alt="Summer Program" class="mascot-image">
+            <div class="date-tag">Starts 1st June</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h2>Summer Academic Enrichment</h2>
+          <p>Keep your child engaged during summer with our enriching academic programs designed to prevent learning loss and build new skills.</p>
+          <a routerLink="courses/robotics" class="card-link">Explore Programs <span class="arrow-icon">></span></a>
+        </div>
+      </div>
     </div>
-</section>
+  </div>
+</div>

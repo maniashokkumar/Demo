@@ -1,137 +1,322 @@
+// header.component.scss
+// Variables
+$primary-color: #2749f6;
+$yellow: #ffd83d;
+$gray-light: #f8f8f8;
+$gray-dark: #333;
+$white: #fff;
+$border-color: #e5e5e5;
 
-header {
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+// Breakpoints
+$breakpoint-mobile: 768px;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
   }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-mobile + 1px}) {
+    @content;
+  }
+}
+
+// Header Styles
+.site-header {
+  border-bottom: 1px solid $border-color;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  position: relative;
   
-  .navbar {
-    display: flex;
+  .container {
+    @include flex-center;
     justify-content: space-between;
-    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 80px;
+    
+    @include mobile {
+      height: 60px;
+    }
   }
   
   .logo {
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    font-weight: bold;
-    color: #000;
+    img {
+      height: 40px;
+      
+      @include mobile {
+        height: 32px;
+      }
+    }
+  }
+}
+
+// Desktop Navigation
+.main-nav {
+  @include desktop {
+    display: block;
   }
   
-  .logo-icon {
-    background-color: #6495ED;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: bold;
-  }
-  
-  .highlight {
-    font-weight: bold;
-  }
-  
-  .academy {
-    color: #6495ED;
-  }
-  
-  .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-    align-items: center;
-  }
-  
-  .nav-links li a {
-    text-decoration: none;
-    color: #000;
-    font-weight: 500;
-  }
-  
-  .waitlist-btn {
-    background-color: #6495ED;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .menu-btn {
+  @include mobile {
     display: none;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
   }
   
-  .mobile-menu {
-    position: fixed;
-    margin-top: 20px;
-    right: 0;
-    width: 100%;
-    background: white;
+  ul {
+    @include flex-center;
+    
+    li {
+      margin: 0 15px;
+      
+      a {
+        font-weight: 500;
+        padding: 10px 0;
+        display: inline-flex;
+        align-items: center;
+        
+        &:hover {
+          color: $primary-color;
+        }
+        
+        .dropdown-icon {
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+        //   background-image: url('assets/images/dropdown-icon.svg');
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+// CTA Buttons
+.cta-buttons {
+  @include flex-center;
+  
+  .btn {
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    margin-left: 10px;
+    
+    &.btn-outline {
+      border: 2px solid $primary-color;
+      color: $primary-color;
+      
+      &:hover {
+        background-color: rgba($primary-color, 0.05);
+      }
+    }
+    
+    &.btn-solid {
+      background-color: $yellow;
+      color: $gray-dark;
+      
+      &:hover {
+        background-color: darken($yellow, 5%);
+      }
+    }
+  }
+}
+
+// Desktop Only Elements
+.desktop-only {
+  @include mobile {
+    display: none;
+  }
+}
+
+// Search Icon
+.search-icon {
+  margin: 0 15px;
+  
+  .search-icon-img {
+    display: block;
+    width: 20px;
+    height: 20px;
+    // background-image: url('assets/images/search-icon.svg');
+  }
+}
+
+// Mobile Controls
+.mobile-controls {
+  @include flex-center;
+  
+  @include desktop {
+    display: none;
+  }
+  
+  .menu-toggle {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+    margin-left: 15px;
+    
+    span, span:before, span:after {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: $gray-dark;
+      position: absolute;
+      transition: all 0.3s ease;
+    }
+    
+    span {
+      top: 50%;
+      transform: translateY(-50%);
+      
+      &:before, &:after {
+        content: '';
+      }
+      
+      &:before {
+        top: -8px;
+      }
+      
+      &:after {
+        bottom: -8px;
+      }
+    }
+    
+    &.active {
+      span {
+        background-color: transparent;
+        
+        &:before {
+          transform: rotate(45deg);
+          top: 0;
+        }
+        
+        &:after {
+          transform: rotate(-45deg);
+          bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// Mobile Navigation
+.mobile-nav {
+  position: fixed;
+  top: 135px; // Adjusted to account for tickertape (60px header + 75px tickertape)
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 135px);
+  background-color: $white;
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  
+  &.active {
+    transform: translateX(0);
+  }
+  
+  .mobile-search {
+    padding: 15px;
+    border-bottom: 1px solid $border-color;
+    @include flex-center;
+    
+    input {
+      flex: 1;
+      height: 40px;
+      border: none;
+      padding: 0 10px;
+      font-size: 16px;
+      
+      &:focus {
+        outline: none;
+      }
+    }
+    
+    button {
+      background: none;
+      border: none;
+      padding: 0 10px;
+      
+      .search-icon-img, .close-icon {
+        display: block;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  
+  nav {
+    ul {
+      li {
+        border-bottom: 1px solid $border-color;
+        
+        a {
+          padding: 15px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-weight: 500;
+          
+          .arrow-icon {
+            display: block;
+            width: 15px;
+            height: 15px;
+            // background-image: url('assets/images/arrow-icon.svg');÷
+          }
+        }
+      }
+    }
+  }
+  
+  // Mobile CTA buttons
+  .mobile-cta-buttons {
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 0 20px 20px 20px;
-    border-top: 1px solid #79a1eb;
+    margin-top: auto; // Push to bottom
+    
+    .btn {
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      margin-bottom: 10px;
+      text-align: center;
+      
+      &.btn-outline {
+        border: 2px solid $primary-color;
+        color: $primary-color;
+        
+        &:hover {
+          background-color: rgba($primary-color, 0.05);
+        }
+      }
+      
+      &.btn-solid {
+        background-color: $yellow;
+        color: $gray-dark;
+        
+        &:hover {
+          background-color: darken($yellow, 5%);
+        }
+      }
+    }
   }
-  
-  .mobile-header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
-  }
-  
-  .close-btn {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .mobile-nav-links {
-    list-style: none;
-    padding: 20px 0;
-    display: flex;
-        flex-direction: column;
-        align-self: flex-start;
-  }
-  
-  .mobile-nav-links li {
-    margin: 10px;
-    height: 35px;
+}
 
-  }
-  
-  .mobile-nav-links li a {
+a{
     text-decoration: none;
-    color: #000;
-    font-weight: 500;
-    font-size: 18px;
-  }
-  
-  .mobile-waitlist-btn {
-    background-color: #6495ED;
-    color: white;
-    border: none;
-    padding: 15px;
-    width: 100%;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: auto;
-  }
-  
-  @media (max-width: 768px) {
-    .nav-links, .waitlist-btn {
-      display: none;
-    }
-  
-    .menu-btn {
-      display: block;
-    }
-  }
+    color: black;
+}
+li{
+    list-style: none;
+}

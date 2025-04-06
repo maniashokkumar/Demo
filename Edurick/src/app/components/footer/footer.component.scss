@@ -1,0 +1,152 @@
+/* footer.component.scss */
+
+// Variables
+$primary-blue: #0039c6;
+$text-color: #ffffff;
+$link-hover-color: #f0f0f0;
+$border-color: rgba(255, 255, 255, 0.2);
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+.footer {
+  background-color: $primary-blue;
+  color: $text-color;
+  padding: $spacing-xl 0;
+  font-family: Arial, sans-serif;
+  
+  a {
+    color: $text-color;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+}
+
+// Logo and social icons section
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-xl;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-lg;
+  }
+}
+
+.footer-logo {
+  img {
+    height: 40px;
+  }
+}
+
+.social-icons {
+  display: flex;
+  gap: $spacing-lg;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $text-color;
+  
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// Navigation links section
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-xl;
+  margin-bottom: $spacing-xl;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+}
+
+.footer-column {
+  h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: $spacing-lg;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      margin-bottom: $spacing-sm;
+      
+      a {
+        display: inline-block;
+        padding: $spacing-sm 0;
+      }
+    }
+  }
+}
+
+// Legal links section
+.footer-bottom {
+  padding-top: $spacing-lg;
+  border-top: 1px solid $border-color;
+}
+
+.legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-lg $spacing-xl;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+  
+  a {
+    font-size: 0.875rem;
+  }
+}
+
+.privacy-choice {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.privacy-icon {
+  display: flex;
+  align-items: center;
+  
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}

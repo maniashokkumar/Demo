@@ -1,29 +1,72 @@
-<header>
-  <nav class="navbar">
-    <div class="logo">
-      <span class="logo-icon">E</span>
-      <!-- <span class="logo-text">Edu<span class="highlight">STEM</span><span class="academy">rick</span></span> -->
-      <span class="logo-text">Edu<span class="academy">rick</span></span>
+<!-- header.component.html -->
+<header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <a href="/">
+          <!-- <img src="assets/images/EduRick-logo.svg" alt="EduRick Logo"> -->
+           <h1>EduRick</h1>
+        </a>
+      </div>
+      
+      <nav class="main-nav desktop-nav">
+        <ul>
+          <li class="dropdown">
+            <a href="#">Why Edurick <i class="dropdown-icon"></i></a>
+          </li>
+          <li class="dropdown">
+            <a href="#">Academics <i class="dropdown-icon"></i></a>
+          </li>
+          <li class="dropdown">
+            <a href="#">Student Life <i class="dropdown-icon"></i></a>
+          </li>
+          <li class="dropdown">
+            <a href="#">Enroll <i class="dropdown-icon"></i></a>
+          </li>
+          <li>
+            <a href="#">Find a School</a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="search-icon desktop-only">
+        <a href="#"><i class="search-icon-img"></i></a>
+      </div>
+      
+      <div class="cta-buttons desktop-only">
+        <a style="display: none;" href="#" class="btn btn-outline">More Info</a>
+        <a href="#" class="btn btn-solid">Enroll Now</a>
+      </div>
+      
+      <div class="mobile-controls">
+        <div class="search-icon">
+          <a href="#"><i class="search-icon-img"></i></a>
+        </div>
+        <div class="menu-toggle" [ngClass]="{'active': isMenuOpen}" (click)="toggleMenu()">
+          <span></span>
+        </div>
+      </div>
     </div>
-    <ul class="nav-links" [class.active]="menuOpen">
-      <li><a href="#">Features</a></li>
-      <li><a href="#">Courses</a></li>
-      <li><a href="#">Testimonials</a></li>
-      <li><a href="#">FAQ</a></li>
-    </ul>
-    <button class="waitlist-btn">Join Class</button>
-    <button class="menu-btn" (click)="toggleMenu()">
-      <span *ngIf="!menuOpen">&#9776;</span>
-      <span *ngIf="menuOpen">&#10005;</span>
-    </button>
-  </nav>
-  <div class="mobile-menu" *ngIf="menuOpen">
-    <ul class="mobile-nav-links">
-      <li><a href="#">Features</a></li>
-      <li><a href="#">Courses</a></li>
-      <li><a href="#">Testimonials</a></li>
-      <li><a href="#">FAQ</a></li>
-    </ul>
-    <button class="mobile-waitlist-btn">Join Waitlist</button>
-  </div>
-</header>
+    
+    <div class="mobile-nav" [ngClass]="{'active': isMenuOpen}">
+      <nav>
+        <ul>
+          <li>
+            <a href="#">Why EduRick <i class="arrow-icon"></i></a>
+          </li>
+          <li>
+            <a href="#">Academics <i class="arrow-icon"></i></a>
+          </li>
+          <li>
+            <a href="#">Student Life <i class="arrow-icon"></i></a>
+          </li>
+          <li>
+            <a href="#">Enroll <i class="arrow-icon"></i></a>
+          </li>
+        </ul>
+      </nav>
+      <div class="mobile-cta-buttons">
+        <a style="display: none;" href="#" class="btn btn-outline">More Info</a>
+        <a href="#" class="btn btn-solid">Enroll Now</a>
+      </div>
+    </div>
+  </header>

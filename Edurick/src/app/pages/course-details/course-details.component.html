@@ -1,0 +1,86 @@
+<!-- course-details.component.html -->
+<div class="course-container">
+    <!-- Course Header Section -->
+    <div class="course-header">  
+      <div class="video-preview">
+        <div class="preview-wrapper">
+          <img src="{{courseDetails.videoDetails.thumbnail}}" alt="Course Preview" class="preview-image">
+          <div class="play-button">
+            <span class="play-icon">▶</span>
+          </div>
+          <!-- <div class="preview-text">Preview this course</div> -->
+        </div>
+      </div>    
+      <div class="course-info">
+        <h1 class="course-title">{{courseDetails.title}}</h1>
+        <h2 class="course-subtitle">{{courseDetails.description}}</h2>
+        
+        <div class="course-meta">
+          <span class="tutorial-badge">{{courseDetails.difficulty}}</span>
+          <!-- <div class="ratings">
+            <span class="rating-score">4.5</span>
+            <div class="stars">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star half-filled">★</span>
+            </div>
+            <span class="rating-count">(3,477 ratings)</span>
+            <span class="student-count">83,046 students</span>
+          </div> -->
+          
+          <div class="course-duration">
+            <span class="duration-icon">▶</span>
+            <span class="duration-text ">{{courseDetails.duration}}</span>
+          </div>
+          
+          <div class="course-creators">
+            <span>Created by</span>
+            <a href="#" class="creator-link"> Ronny Hermosa</a>
+          </div>
+
+          <div class="course-creators">
+            <span>Location: </span>
+            <a href="#" class="creator-link">{{courseDetails.location}}</a>
+          </div>
+          
+          <div class="course-language">
+            <div class="language-item">
+              <span class="globe-icon">🌐</span>
+              <span>{{courseDetails.language}}</span>
+            </div>
+            <!-- <div class="language-item">
+              <span class="subtitle-icon">📄</span>
+              <span>English [Auto]</span>
+            </div> -->
+          </div>
+        </div>
+        
+        <div class="enrollment-section">
+          <div class="price">{{courseDetails.price}}</div>
+          <button class="enroll-button">{{courseDetails.buttonText}}</button>
+          <button class="share-button mobile-only">{{courseDetails.shareButtonText}}</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Course Navigation -->
+    <div class="course-navigation">
+      <nav class="nav-tabs">
+        <a *ngFor="let tab of courseDetails.courseNavigation; let i = index" class="nav-item"  [ngClass]="currentTabIndex === i ? 'active': ''" (click)="toogleTab(i)">{{tab.label}}</a>
+      </nav>
+    </div>
+    
+    <!-- Course Content Section -->
+    <div [ngClass]="currentTabIndex === i ? 'show': ''" class="course-content hide" *ngFor="let tab of courseDetails.courseNavigation; let i = index">
+      <ul class="learning-points" *ngFor="let content of tab.nagivationDetails">
+        <li class="learning-item">
+          <span class="check-icon">✓</span>
+          <span>{{content}}</span>
+        </li>
+      </ul>
+    </div>
+
+    
+  </div>

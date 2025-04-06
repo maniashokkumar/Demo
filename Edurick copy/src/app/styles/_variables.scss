@@ -1,0 +1,70 @@
+// Spacing
+$spacing-xs: 0.5rem;    // 8px
+$spacing-sm: 1rem;      // 16px
+$spacing-md: 1.5rem;    // 24px
+$spacing-lg: 2rem;      // 32px
+$spacing-xl: 3rem;      // 48px
+$spacing-xxl: 4rem;     // 64px
+
+// Container
+$container-padding: $spacing-md;
+$container-max-width: 1200px;
+
+// Section
+$section-padding-y: $spacing-xl;
+$section-padding-y-mobile: $spacing-lg;
+
+// Grid
+$grid-gap: $spacing-md;
+$grid-gap-mobile: $spacing-sm;
+
+// Card
+$card-padding: $spacing-md;
+$card-padding-mobile: $spacing-sm;
+$card-border-radius: 8px;
+$card-margin-bottom: $spacing-md;
+
+// Typography
+$heading-margin-bottom: $spacing-md;
+$paragraph-margin-bottom: $spacing-sm;
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Mixins
+@mixin container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+  width: 100%;
+}
+
+@mixin section {
+  padding: $section-padding-y 0;
+  
+  @media (max-width: $breakpoint-md) {
+    padding: $section-padding-y-mobile 0;
+  }
+}
+
+@mixin grid {
+  display: grid;
+  gap: $grid-gap;
+  
+  @media (max-width: $breakpoint-md) {
+    gap: $grid-gap-mobile;
+  }
+}
+
+@mixin card {
+  padding: $card-padding;
+  border-radius: $card-border-radius;
+  margin-bottom: $card-margin-bottom;
+  
+  @media (max-width: $breakpoint-md) {
+    padding: $card-padding-mobile;
+  }
+} 

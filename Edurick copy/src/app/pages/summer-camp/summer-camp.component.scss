@@ -1,0 +1,1056 @@
+// Variables
+$primary-color: #FF6B00;
+$secondary-color: #00A9FF;
+$accent-color: #FFD700;
+$text-color: #333333;
+$light-text: #666666;
+$white: #ffffff;
+$light-bg: #f8f9fa;
+$dark-bg: #1a1a2e;
+$success-color: #28a745;
+$transition: all 0.3s ease;
+$box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+$border-radius: 24px;
+$coding-bg: $secondary-color;
+$entrepreneur-bg: $primary-color;
+
+// Hero Section
+.hero {
+  background: linear-gradient(135deg, $primary-color, #FF9D00);
+  min-height: 90vh;
+  padding: 4rem 0 0 0;
+  color: $white;
+  position: relative;
+  overflow: hidden;
+
+  .wave-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    direction: ltr;
+    pointer-events: none;
+    
+    svg {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 120px;
+      transform: rotateY(180deg);
+    }
+
+    path {
+      fill: $light-bg;
+    }
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    min-height: calc(90vh - 8rem);
+  }
+
+  .hero-text {
+    flex: 1;
+    max-width: 600px;
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      
+      .highlight {
+        color: $accent-color;
+        display: inline-block;
+      }
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      opacity: 0.9;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+
+      .cta-button {
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: $transition;
+        font-size: 1.1rem;
+
+        &.primary {
+          background: $white;
+          color: $primary-color;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+          &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+          }
+        }
+
+        &.secondary {
+          background: rgba($white, 0.15);
+          color: $white;
+          backdrop-filter: blur(10px);
+          border: 2px solid rgba($white, 0.2);
+
+          &:hover {
+            background: rgba($white, 0.2);
+            transform: translateY(-3px);
+          }
+        }
+      }
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+
+      .stat-item {
+        text-align: center;
+        background: rgba($white, 0.1);
+        padding: 1.5rem 1rem;
+        border-radius: 16px;
+        backdrop-filter: blur(10px);
+        transition: $transition;
+
+        &:hover {
+          transform: translateY(-5px);
+          background: rgba($white, 0.15);
+        }
+
+        .stat-value {
+          font-size: 2rem;
+          font-weight: 800;
+          color: $accent-color;
+          margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+          font-size: 0.9rem;
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+
+  .hero-image {
+    flex: 1;
+    position: relative;
+
+    .image-container {
+      position: relative;
+      width: 100%;
+      padding-top: 75%;
+      border-radius: 30px;
+      overflow: hidden;
+      background: rgba($white, 0.1);
+      backdrop-filter: blur(10px);
+
+      .main-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 30px;
+      }
+
+      .floating-icons {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+
+        .floating-icon {
+          position: absolute;
+          width: 80px;
+          height: 80px;
+          filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.15));
+          animation: float 6s ease-in-out infinite;
+
+          &.icon-1 {
+            top: -20px;
+            right: 10%;
+            animation-delay: 0s;
+          }
+
+          &.icon-2 {
+            bottom: 10%;
+            left: -20px;
+            animation-delay: 2s;
+          }
+        }
+
+        .html-tag {
+          position: absolute;
+          bottom: 20px;
+          right: -10px;
+          background: $white;
+          color: $primary-color;
+          padding: 0.5rem 1rem;
+          border-radius: 12px;
+          font-weight: 600;
+          font-size: 0.9rem;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          animation: float 5s ease-in-out infinite;
+          animation-delay: 1s;
+        }
+      }
+    }
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+// Mobile Responsive Styles
+@media (max-width: 1024px) {
+  .hero {
+    .hero-content {
+      flex-direction: column;
+      gap: 3rem;
+      padding: 2rem 0;
+
+      .hero-text {
+        text-align: center;
+        
+        h1 {
+          font-size: 2.8rem;
+        }
+
+        .cta-buttons {
+          justify-content: center;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      .hero-image {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+
+        .image-container {
+          padding-top: 65%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 2rem 0;
+
+    .hero-text {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .subtitle {
+        font-size: 1.1rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+
+        .cta-button {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      .stats-grid {
+        gap: 1rem;
+
+        .stat-item {
+          padding: 1rem;
+
+          .stat-value {
+            font-size: 1.6rem;
+          }
+
+          .stat-label {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Camps Section
+.camps {
+  padding: 6rem 0;
+  background: $light-bg;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: $text-color;
+      position: relative;
+      z-index: 1;
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        background: #FFE9A0;
+        border-radius: 50%;
+        z-index: -1;
+        left: -20px;
+        top: -25px;
+      }
+    }
+  }
+
+  .grade-filter {
+    display: flex;
+    gap: 0.5rem;
+
+    .grade-button {
+      padding: 0.5rem 1.5rem;
+      border: 2px solid transparent;
+      border-radius: 50px;
+      background: $white;
+      color: $light-text;
+      font-weight: 600;
+      cursor: pointer;
+      transition: $transition;
+
+      &:hover {
+        border-color: $primary-color;
+        color: $primary-color;
+      }
+
+      &.active {
+        background: $primary-color;
+        color: $white;
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  .camps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .camp-card {
+    display: flex;
+    background: $white;
+    border-radius: $border-radius;
+    overflow: hidden;
+    transition: $transition;
+    position: relative;
+    min-height: 240px;
+    box-shadow: $box-shadow;
+    flex-direction: column;
+
+    .card-main-content {
+      display: flex;
+      position: relative;
+    }
+
+    &.coding {
+    background: rgb(229, 137, 55);
+      .enroll-button {
+        color: rgb(229, 137, 55) !important;
+        &:hover {
+          background: rgba($white, 0.9);
+        }
+      }
+    }
+
+    &.entrepreneur {
+      background: linear-gradient(135deg, $entrepreneur-bg 0%, lighten($entrepreneur-bg, 15%) 100%);
+      .enroll-button {
+        color: $entrepreneur-bg !important;
+        &:hover {
+          background: rgba($white, 0.9);
+        }
+      }
+    }
+
+    .camp-image {
+      width: 280px;
+      position: relative;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .price-tag {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        background: $accent-color;
+        padding: 0.5rem 1rem;
+        border-radius: 16px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+        .original-price {
+          text-decoration: line-through;
+          color: rgba(0, 0, 0, 0.5);
+          font-size: 0.9rem;
+        }
+
+        .current-price {
+          font-weight: 800;
+          color: $text-color;
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .camp-content {
+      flex: 1;
+      padding: 1.5rem;
+      color: $white;
+      display: flex;
+      flex-direction: column;
+
+      h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+
+      .skills {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 1rem;
+        max-width: 100%;
+
+        .skill-tag {
+          background: rgb(40 17 17 / 20%);
+          color: $white;
+          padding: 0.35rem 0.8rem;
+          border-radius: 50px;
+          font-size: 0.85rem;
+          font-weight: 500;
+          backdrop-filter: blur(4px);
+          white-space: nowrap;
+          display: inline-flex;
+          align-items: center;
+          line-height: 1;
+        }
+      }
+
+      .description {
+        margin-bottom: 1rem;
+        line-height: 1.5;
+        opacity: 0.9;
+        font-size: 0.95rem;
+      }
+
+      .duration {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+
+        i {
+          color: $accent-color;
+        }
+      }
+    }
+
+    .camp-dates {
+      width: 280px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      color: $white;
+      justify-content: center;
+      align-items: center;
+
+      .date-slot {
+        background: rgba($white, 0.1);
+        padding: 0.75rem;
+        border-radius: 16px;
+        text-align: center;
+        backdrop-filter: blur(4px);
+        width: 100%;
+        max-width: 240px;
+
+        .date-info {
+          font-weight: 600;
+          color: $white;
+          margin-bottom: 0.5rem;
+          font-size: 0.95rem;
+        }
+
+        .enroll-button {
+          width: 100%;
+          padding: 0.6rem;
+          border: none;
+          border-radius: 50px;
+          background: $white;
+          color: $text-color;
+          font-weight: 600;
+          cursor: pointer;
+          transition: $transition;
+          font-size: 0.95rem;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+          }
+        }
+      }
+    }
+
+    .lessons-section {
+      background: rgba($white, 0.08);
+      backdrop-filter: blur(12px);
+      padding: 2rem;
+      border-top: 1px solid rgba($white, 0.12);
+      
+      .lessons-header {
+        color: $white;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        padding-left: 2rem;
+      }
+
+      .lessons-timeline {
+        position: relative;
+        padding-left: 2rem;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 8px;
+          top: 0;
+          height: 100%;
+          width: 2px;
+          background: rgba($white, 0.15);
+        }
+
+        .lesson-item {
+          position: relative;
+          margin-bottom: 2rem;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 1.5rem;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: $accent-color;
+            border: 3px solid rgba($white, 0.2);
+            z-index: 1;
+          }
+
+          .lesson-header {
+            background: rgba($white, 0.12);
+            padding: 1rem 1.5rem;
+            border-radius: $border-radius;
+            cursor: pointer;
+            transition: $transition;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            
+            &:hover {
+              background: rgba($white, 0.15);
+              transform: translateY(-2px);
+              box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            }
+
+            .day-title {
+              display: flex;
+              align-items: center;
+              gap: 1.5rem;
+              color: $white;
+
+              .day {
+                font-weight: 600;
+                opacity: 0.9;   
+                padding: 0.3rem 1rem;
+                border-radius: 50px;
+                font-size: 0.9rem;
+              }
+
+              .title {
+                font-weight: 500;
+                font-size: 1.1rem;
+              }
+            }
+
+            .expand-icon {
+              color: $white;
+              transition: $transition;
+              background: rgba($white, 0.1);
+              width: 32px;
+              height: 32px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              
+              &.expanded {
+                transform: rotate(180deg);
+                background: rgba($white, 0.2);
+              }
+            }
+          }
+
+          .lesson-content {
+            padding: 1.5rem;
+            color: rgba($white, 0.9);
+            display: none;
+            background: rgba($white, 0.08);
+            margin-top: 1rem;
+            border-radius: $border-radius;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+            &.expanded {
+              display: flex;
+              gap: 2rem;
+              align-items: flex-start;
+            }
+
+            .lesson-image {
+              width: 200px;
+              height: 140px;
+              border-radius: 12px;
+              overflow: hidden;
+        
+              transition: $transition;
+
+              &:hover {
+                transform: scale(1.02);
+        
+              }
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: $transition;
+              }
+            }
+
+            .lesson-details {
+              flex: 1;
+
+              .lesson-description {
+                margin-bottom: 1rem;
+                line-height: 1.6;
+                font-size: 0.95rem;
+              }
+
+              .lesson-tags {
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+
+                .tag {
+                  background: rgba($white, 0.12);
+                  padding: 0.3rem 1rem;
+                  border-radius: 50px;
+                  font-size: 0.9rem;
+                  color: $white;
+                  backdrop-filter: blur(4px);
+                  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+                  &:hover {
+                    background: rgba($white, 0.15);
+                    transform: translateY(-1px);
+                  }
+                }
+              }
+            }
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    .know-more-button {
+      background: none;
+      border: none;
+      color: $white;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      margin-top: 1rem;
+      transition: $transition;
+
+      i {
+        transition: $transition;
+      }
+
+      &:hover {
+        opacity: 0.9;
+        i {
+          transform: translateX(5px);
+        }
+      }
+
+      &.expanded {
+        i {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}
+
+// Responsive Styles
+@media (max-width: 1200px) {
+  .camps {
+    .camp-card {
+      flex-direction: column;
+
+      .card-main-content {
+        flex-direction: column;
+      }
+
+      .camp-image {
+        width: 100%;
+        height: 240px;
+
+        .price-tag {
+          left: auto;
+          right: 1rem;
+          background: rgba($accent-color, 0.9);
+          backdrop-filter: blur(8px);
+        }
+      }
+
+      .camp-content {
+        padding: 1.5rem;
+        text-align: left;
+
+        h3 {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+
+        .skills {
+          margin-bottom: 1.2rem;
+
+          .skill-tag {
+            background: rgba($white, 0.15);
+            backdrop-filter: blur(4px);
+          }
+        }
+
+        .description {
+          font-size: 1rem;
+          line-height: 1.6;
+          margin-bottom: 1.2rem;
+        }
+
+        .duration {
+          margin-bottom: 1.2rem;
+          font-size: 0.95rem;
+        }
+
+        .know-more-button {
+          margin: 0;
+          padding: 0.8rem 0;
+          justify-content: space-between;
+          border-top: 1px solid rgba($white, 0.1);
+          width: 100%;
+        }
+      }
+
+      .camp-dates {
+        width: 100%;
+        padding: 1rem;
+        gap: 1rem;
+
+        .date-slot {
+          max-width: 100%;
+          background: rgba($white, 0.12);
+
+          .date-info {
+            font-size: 1rem;
+          }
+
+          .enroll-button {
+            padding: 0.8rem;
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .lessons-section {
+        padding: 1.5rem;
+
+        .lessons-header {
+          padding-left: 1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .lessons-timeline {
+          padding-left: 1.5rem;
+
+          .lesson-item {
+            margin-bottom: 1.5rem;
+
+            &::before {
+              left: -1.5rem;
+            }
+
+            .lesson-header {
+              padding: 1rem;
+            }
+
+            .lesson-content {
+              &.expanded {
+                flex-direction: column;
+                gap: 1rem;
+              }
+
+              .lesson-image {
+                width: 100%;
+                height: 180px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .camps {
+    padding: 3rem 0;
+
+    .container {
+      padding: 10px;
+      max-width: 100%;
+    }
+
+    .section-header {
+      padding: 0 1rem;
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+
+      h2 {
+        font-size: 2rem;
+
+        &:before {
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60px;
+          height: 60px;
+        }
+      }
+    }
+
+    .grade-filter {
+      padding: 0 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .grade-button {
+        font-size: 0.9rem;
+        padding: 0.4rem 1.2rem;
+      }
+    }
+
+    .camps-grid {
+      gap: 1.5rem;
+      padding: 10px;
+      margin: 0;
+
+      .camp-card {
+        border-radius: $border-radius;
+        margin: 0;
+        width: 100%;
+
+        .card-main-content {
+          border-radius: $border-radius $border-radius 0 0;
+        }
+
+        .camp-image {
+          border-radius: $border-radius $border-radius 0 0;
+          overflow: hidden;
+        }
+
+        .lessons-section {
+          border-radius: 0 0 $border-radius $border-radius;
+        }
+
+        .camp-content {
+          .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: rgba($white, 0.05);
+            border-radius: 12px;
+            max-height: none;
+            overflow: visible;
+
+            .skill-tag {
+              background: rgba($white, 0.1);
+              padding: 0.35rem 0.8rem;
+              border-radius: 50px;
+              font-size: 0.85rem;
+              font-weight: 500;
+              white-space: nowrap;
+              backdrop-filter: blur(4px);
+              line-height: 1;
+              flex: 0 0 auto;
+              
+              &:first-child {
+                background: rgba($white, 0.15);
+                font-weight: 600;
+              }
+            }
+          }
+
+          .description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+          }
+
+          .duration {
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+          }
+
+          .know-more-button {
+            margin: 0;
+            padding: 0.8rem 0;
+            justify-content: space-between;
+            border-top: 1px solid rgba($white, 0.1);
+            width: 100%;
+          }
+        }
+
+        .camp-dates {
+          width: 100%;
+          padding: 1rem;
+          gap: 1rem;
+
+          .date-slot {
+            max-width: 100%;
+            background: rgba($white, 0.12);
+
+            .date-info {
+              font-size: 1rem;
+            }
+
+            .enroll-button {
+              padding: 0.8rem;
+              font-size: 1rem;
+            }
+          }
+        }
+
+        .lessons-section {
+          padding: 1.5rem;
+
+          .lessons-header {
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+          }
+
+          .lessons-timeline {
+            padding-left: 1.5rem;
+
+            .lesson-item {
+              margin-bottom: 1.5rem;
+
+              &::before {
+                left: -1.5rem;
+              }
+
+              .lesson-header {
+                padding: 1rem;
+              }
+
+              .lesson-content {
+                &.expanded {
+                  flex-direction: column;
+                  gap: 1rem;
+                }
+
+                .lesson-image {
+                  width: 100%;
+                  height: 180px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+} 

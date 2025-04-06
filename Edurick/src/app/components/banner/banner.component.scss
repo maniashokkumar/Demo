@@ -1,149 +1,204 @@
-.hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 40px;
-    background-image: url('https://img.freepik.com/free-photo/child-making-robot_23-2148863405.jpg');
-    background-repeat: no-repeat;
-    
-}
-.hero {
-    width: 100vw;  /* Full width of the viewport */
-    background-size: cover; /* Ensures the image covers the entire div */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents tiling */
+// banner.component.scss
+$primary-color: #2749f6;
+$yellow: #ffd83d;
+$gray-light: #f8f8f8;
+$gray-dark: #333;
+$white: #fff;
+$border-color: #e5e5e5;
+// Variables
+$primary-blue: #2749f6;
+$light-blue: #e8f0ff;
+$dark-text: #252525;
+$yellow-bg: #fff8c9;
+$blue-bg: #e0ebff;
+$orange-bg: #ffede4;
+$purple-bg: #f8e0ff;
+
+// Breakpoints
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
 }
 
-.badge {
-    background-color: #90d7b4;
-    padding: 5px 15px;
-    border-radius: 15px;
-    font-weight: bold;
+@mixin tablet {
+  @media (max-width: #{$breakpoint-tablet}) {
+    @content;
+  }
 }
-h1 {
-    font-weight: bold;
-    color: #121212;
-    font-size: 2.25rem;
-}
-.content{
-    text-align: left;
+
+.banner-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  
+  @include mobile {
     padding: 20px;
-/* From https://css.glass */
-background: rgba(255, 255, 255, 0.43);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(3.7px);
--webkit-backdrop-filter: blur(3.7px);
-border: 1px solid rgba(255, 255, 255, 0.3);
+  }
 }
-.highlight {
-    color: #6b82ff;
-}
-p {
-    margin-top: 20px;
-    max-width: 600px;
-    font-size: 1rem;
-    --tw-text-opacity: 1;
-    color: rgb(75 85 99 / var(--tw-text-opacity));
-}
-.buttons {
-    margin: 20px 0;
-}
-.primary-btn, .secondary-btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-.primary-btn {
-    background-color: #6b82ff;
-    color: white;
-    margin-right: 10px;
-}
-.secondary-btn {
-    background-color: white;
-    border: 1px solid #6b82ff;
-    color: #6b82ff;
-}
-.adopters {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-}
-.avatars {
-    display: flex;
-}
-.circle {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #ccc;
-    margin-right: -10px;
-}
-.info {
-    font-size: 0.9rem;
-    color: #6b82ff;
-}
-.visual {
-    position: relative;
-    margin-top: 40px;
-}
-.big-card {
-    width: 350px;
-    height: 250px;
-    background: #c7e3db;
-    border-radius: 15px;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
 
-    img{
-        width: 350px;
-        height: 250px;
+.banner-content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  
+  @include tablet {
+    flex-direction: column-reverse;
+  }
+  
+  .text-content {
+    flex: 1;
+    padding-right: 40px;
+    
+    @include tablet {
+      padding-right: 0;
+      text-align: center;
+      margin-top: 20px;
     }
-}
-.tag {
-    position: absolute;
-    background: white;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-}
-.top-rated {
-    bottom: -20px;
-    left: 20px;
-}
-.courses {
-    top: -20px;
-    right: 20px;
-}
-@media (min-width: 768px) {
-    .hero {
-        flex-direction: row;
-        text-align: left;
-        justify-content: space-between;
-        padding: 80px;
-        min-height: 500px;
-        h1 {
-            font-size: 3.75rem;
-            line-height: 1;
-        }
+    
+    h1 {
+      font-size: 42px;
+      line-height: 1.2;
+      color: $dark-text;
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-style: italic;
+      
+      @include mobile {
+        font-size: 28px;
+      }
     }
-    .content {
-        max-width: 75%;
-        padding: 30px;
+    
+    .banner-description {
+      font-size: 18px;
+      line-height: 1.5;
+      color: $dark-text;
+      margin-bottom: 30px;
+      
+      @include mobile {
+        font-size: 16px;
+      }
     }
-    .visual {
-        margin-top: 0;
+    
+    .cta-button {
+      background-color: $primary-blue;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      transition: background-color 0.3s ease;
+      
+      &:hover {
+        background-color: darken($primary-blue, 10%);
+      }
+      
+      .heart-icon {
+        margin-left: 8px;
+      }
     }
-    .big-card {
-        width: 450px;
-        height: 300px;
+  }
+  
+  .image-content {
+    flex: 1;
+    
+    .banner-image {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      
+      @include mobile {
+        max-width: 100%;
+      }
+    }
+  }
+}
 
-        img{
-            width: 450px;
-            height: 300px;
-        }
+.features-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+  
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    
+    @include mobile {
+      margin-bottom: 20px;
     }
+    
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      flex-shrink: 0;
+      font-size: 20px;
+      
+      &.yellow-icon {
+        background-color: $yellow-bg;
+        color: #ffc107;
+      }
+      
+      &.blue-icon {
+        background-color: $blue-bg;
+        color: $primary-blue;
+      }
+      
+      &.orange-icon {
+        background-color: $orange-bg;
+        color: #ff7043;
+      }
+      
+      &.purple-icon {
+        background-color: $purple-bg;
+        color: #9c27b0;
+      }
+      
+      svg {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+      }
+    }
+    
+    .feature-text {
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0 0 5px 0;
+        color: $dark-text;
+        
+        @include mobile {
+          font-size: 16px;
+        }
+      }
+      
+      p {
+        font-size: 14px;
+        color: lighten($dark-text, 20%);
+        margin: 0;
+      }
+    }
+  }
 }

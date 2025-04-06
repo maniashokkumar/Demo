@@ -1,0 +1,65 @@
+/* Container for the ticker tape */
+.ticker-tape {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the text horizontally for desktop */
+    background-color: #4CAF50; /* Background color for the ticker */
+    color: white; /* Text color */
+    padding: 10px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    position: relative; /* Set the container to relative for positioning close button */
+    z-index: 10;
+    overflow: hidden; /* Hide overflow content */
+    width: 100%; /* Ensure it takes full width */
+  }
+  
+  /* Style for the text inside the ticker tape */
+  .ticker-tape p {
+    margin: 0;
+    padding-right: 30px; /* Space for the close button */
+    white-space: nowrap; /* Prevent wrapping text */
+  }
+  
+  /* Style for the close button image */
+  .ticker-tape img {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Place the close button at the far right */
+    transform: translateY(-50%); /* Vertically center the button */
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Hover effect for the close button */
+  .ticker-tape img:hover {
+    transform: translateY(-50%) rotate(90deg);
+  }
+
+  
+  /* Mobile view: Wrap text and allow close button to stay fixed */
+  @media (max-width: 600px) {
+    .ticker-tape {
+      justify-content: flex-start; /* Align text to the left on mobile */
+      text-align: left; /* Left-align the text */
+      padding-right: 40px; /* Adjust right padding for space for the close button */
+    }
+  
+    .ticker-tape p {
+      white-space: normal; /* Allow text to wrap */
+      animation: none; /* Remove animation on mobile */
+      width: max-content; /* Wrap text but make sure it's visible in the field */
+    }
+  
+    .ticker-tape img {
+      position: absolute; /* Keep close button fixed at the right */
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+    }
+  }
+  

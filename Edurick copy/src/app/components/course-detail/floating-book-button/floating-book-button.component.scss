@@ -1,0 +1,60 @@
+@import '../../../styles/variables';
+@import '../../../styles/theme';
+
+// Variables
+$primary-color: #FF6B00;
+$white: #ffffff;
+$box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s ease;
+
+// Floating Book Button
+.floating-book-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #FF6B00;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 0, 0.3);
+    background: darken(#FF6B00, 5%);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.2);
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .floating-book-button {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+  }
+} 

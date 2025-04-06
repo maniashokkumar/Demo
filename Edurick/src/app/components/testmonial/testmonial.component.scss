@@ -1,0 +1,114 @@
+.testimonial-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    margin-top: 50px;
+  }
+  
+  .testimonial-header {
+    margin-bottom: 1rem;
+    text-align: center;
+    .testimonial-label {
+      color: #7a1ea1; // Purple color
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    
+    .testimonial-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #333;
+      margin: 0;
+      
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+  }
+  
+  .testimonial-content {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+  
+  .testimonial-image-container {
+    flex: 0 0 auto;
+    
+    .testimonial-image {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background-color: #ffde59; // Yellow background
+      overflow: hidden;
+      
+      @media (max-width: 768px) {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+      }
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      
+      .clock-icon {
+        position: absolute;
+        top: 10%;
+        right: 0;
+        width: 60px;
+        height: 60px;
+        
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+  
+  .testimonial-quote {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    .quote-text {
+      font-size: 1.5rem;
+      line-height: 1.4;
+      color: #333;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      
+      @media (max-width: 768px) {
+        font-size: 1.25rem;
+      }
+    }
+    
+    .quote-author {
+      .author-name {
+        font-weight: 700;
+        color: #333;
+      }
+      
+      .author-description {
+        color: #555;
+      }
+      
+      sup {
+        font-size: 0.6em;
+        vertical-align: super;
+      }
+    }
+  }

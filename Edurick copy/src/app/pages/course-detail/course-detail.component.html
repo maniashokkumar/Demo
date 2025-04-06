@@ -1,0 +1,70 @@
+<!-- Hero Section -->
+<app-hero-section
+  [courseTitle]="courseTitle"
+  [courseDescription]="courseDescription"
+  (openVideo)="openVideoModal()">
+</app-hero-section>
+
+<!-- Why Choose Section -->
+<section class="why-choose-section">
+  <div class="container">
+    <h2 class="section-title">Why Choose This Course?</h2>
+    <div class="reasons-grid">
+      <div class="reason-card">
+        <i class="fas fa-robot"></i>
+        <h3>Hands-on Learning</h3>
+        <p>Build real robots and work on practical projects</p>
+      </div>
+      <div class="reason-card">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <h3>Expert Instructors</h3>
+        <p>Learn from industry professionals</p>
+      </div>
+      <div class="reason-card">
+        <i class="fas fa-certificate"></i>
+        <h3>Certification</h3>
+        <p>Earn recognized certifications</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<app-pricing-section
+  [pricingTiers]="pricingTiers"
+  [selectedTier]="selectedTier"
+  (selectTier)="selectTier($event)"
+  (scrollToBooking)="scrollToBooking()">
+</app-pricing-section>
+
+<!-- Curriculum Section -->
+<app-curriculum-section
+  [pricingTiers]="pricingTiers"
+  [selectedTier]="selectedTier">
+</app-curriculum-section>
+
+<!-- FAQ Section -->
+<app-faq-section
+  [faqs]="faqs">
+</app-faq-section>
+
+<!-- Final CTA Section -->
+<app-final-cta-section
+  (scrollToBooking)="scrollToBooking()">
+</app-final-cta-section>
+
+<!-- Floating Book Button -->
+<app-floating-book-button
+  (scrollToBooking)="scrollToBooking()">
+</app-floating-book-button>
+
+<!-- Video Modal -->
+<app-video-modal
+  [isOpen]="isVideoModalOpen"
+  (close)="closeVideoModal()">
+</app-video-modal>
+
+<!-- Booking Section (hidden, used for scrolling) -->
+<div #bookingSection class="booking-section" style="display: none;">
+  <!-- Hidden booking section for scrolling -->
+</div>

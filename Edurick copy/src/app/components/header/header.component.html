@@ -1,0 +1,84 @@
+<header class="header" [class.scrolled]="isScrolled">
+  <div class="header-container">
+    <div class="logo">
+      <a routerLink="/">
+        <img src="assets/images/logo-white.png" alt="Edurick Logo" />
+      </a>
+    </div>
+
+    <nav class="nav-menu">
+      <ul class="nav-links">
+        <ng-container *ngFor="let item of headerData">
+          <li *ngIf="!item.subMenu" ><a routerLink="{{item.link}}">{{item.title}}</a></li>
+          <li class="dropdown" *ngIf="item.subMenu">
+            <a class="dropdown-toggle">
+              {{item.title}}
+              <i class="fas fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li *ngFor="let subItem of item.subMenu">
+                <a routerLink="{{subItem.link}}">
+                  {{subItem.title}}
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ng-container>
+       
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a routerLink="/login" class="login-button">Book a Demo</a>
+    </div>
+
+    <button class="hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" [class.active]="isMenuOpen">
+    <div class="mobile-menu-header">
+      <div class="logo">
+        <a routerLink="/" (click)="closeMenu()">
+          <img src="assets/images/logo-white.png" alt="Edurick Logo" />
+        </a>
+      </div>
+      <button class="close-menu" (click)="closeMenu()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="mobile-content">
+      <nav class="mobile-nav">
+        <ul>
+          <ng-container *ngFor="let item of headerData; let i = index">
+            <li *ngIf="!item.subMenu">
+              <a [routerLink]="item.link" (click)="closeMenu()">{{item.title}}</a>
+            </li>
+            <li class="mobile-dropdown" *ngIf="item.subMenu" [class.active]="activeDropdownIndex === i">
+              <div class="mobile-dropdown-toggle" (click)="toggleMobileDropdown($event, i)">
+                {{item.title}}
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <ul class="mobile-dropdown-menu">
+                <li *ngFor="let subItem of item.subMenu">
+                  <a [routerLink]="subItem.link" (click)="closeMenu()">
+                    {{subItem.title}}
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ng-container>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="mobile-cta">
+      <a routerLink="/login" class="login-button" (click)="closeMenu()">Book a Demo</a>
+    </div>
+  </div>
+</header> 

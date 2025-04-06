@@ -1,137 +1,259 @@
-.badge {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    color: white;
-    margin-bottom: 10px;
+// courses-grid.component.scss
+// Variables
+$green-bg: #8cd06a;
+$blue-bg: #a8e8f9;
+$dark-blue-bg: #254bf9;
+$card-border-radius: 16px;
+$primary-blue: #254bf9;
+$text-dark: #252525;
+
+// Breakpoints
+$breakpoint-small: 576px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
+.container{
+    background-color: #f0f7fc;
 }
-.beginner { background-color: orange; }
-.intermediate { background-color: green; }
-.advanced { background-color: blue; }
-.nav-cards {
-    margin: 20px;
-    text-align: center;
-    margin-top: 80px;
-    h2 {
-        font-weight: bold;
-        font-size: 2.25rem;
-        line-height: 2.5rem;
-    }
+// Page Container
+.courses-container {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
 
-    .para{
-        padding: 0 150px;
-    }
-
-    p {
-        font-size: 1.2rem;
-        margin-bottom: 30px;
-        margin-top: 20px;
-        --tw-text-opacity: 0.8;
-        color: rgb(75 85 99 / var(--tw-text-opacity));
-    }
-
-    .cards-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 80px;
-    }
-
-    .card {
-        background: white;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        flex: 1 1 calc(33.333% - 40px); // Three cards per row in desktop
-        max-width: 350px;
-        text-align: justify;
-        transition: transform 0.3s ease-in-out;
-
-        &:hover {
-            transform: translateY(-5px);
-        }
-
-        .icon {
-            font-size: 30px;
-            background: rgba(0, 123, 255, 0.1);
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-
-        h3 {
-            font-weight: bold;
-            font-size: 1.25rem;
-            line-height: 1.75rem;
-            margin-bottom: 0.75rem;
-            text-align: left;
-        }
-
-        p {
-            font-size: 1rem;
-            --tw-text-opacity: 0.8;
-            color: rgb(75 85 99 / var(--tw-text-opacity));
-            line-height: 24px;
-        }
-    }
 }
 
-// Mobile View
-@media (max-width: 768px) {
-    .nav-cards{
-        h2{
-            font-size: 1.875rem;
-            line-height: 2.25rem;
-        }
-        .para{
-            padding: 0;
-        }
-    }
-    .nav-cards .cards-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        flex: 1 1 100%; // Stack cards in mobile
-    }
-}
-
-.register-btn {
-    background-color: #2563eb; // Blue-600
-    color: white;
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+// Grid Layout
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   
-    &:hover {
-      background-color: #1d4ed8; // Darker Blue-700 on hover
-    }
+  @media (max-width: $breakpoint-large) {
+    grid-template-columns: repeat(2, 1fr);
+  }
   
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+  @media (max-width: $breakpoint-medium) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Card Styles
+.course-card {
+  background-color: white;
+  border-radius: $card-border-radius;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Card Header Styles
+.card-header {
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+  
+  @media (max-width: $breakpoint-small) {
+    height: 150px;
+  }
+  
+  &.green {
+    background-color: $green-bg;
+  }
+  
+  &.blue {
+    background-color: $blue-bg;
+    
+    // Add decorative + icons
+    &::before, &::after {
+      content: '+';
+      position: absolute;
+      color: white;
+      font-size: 24px;
+      opacity: 0.4;
+    }
+    
+    &::before {
+      top: 20px;
+      left: 60px;
+    }
+    
+    &::after {
+      bottom: 40px;
+      right: 80px;
     }
   }
   
-
-// Mobile View
-@media (max-width: 768px) {
-    .nav-cards .cards-container {
-        flex-direction: column;
-        align-items: center;
+  &.dark-blue {
+    background-color: $dark-blue-bg;
+    
+    // Add decorative star icons
+    &::before, &::after {
+      content: '★';
+      position: absolute;
+      color: white;
+      font-size: 16px;
+      opacity: 0.4;
     }
-
-    .card {
-        flex: 1 1 100%; // Stack cards in mobile
+    
+    &::before {
+      top: 30px;
+      left: 40px;
     }
+    
+    &::after {
+      bottom: 60px;
+      right: 60px;
+    }
+  }
+  
+  .header-content {
+    // position: relative;
+    // height: 100%;
+    // display: flex;
+    // justify-content: space-between;
+    
+    h3 {
+      color: white;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+      max-width: 60%;
+      
+      .book-icon {
+        display: inline-block;
+        margin-left: 8px;
+      }
+      
+      @media (max-width: $breakpoint-small) {
+        font-size: 22px;
+      }
+    }
+    .date-tag {
+        position: absolute;
+        top:10px;
+        right: 10px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        z-index: 10;
+      }
+    }
+    
+    &.blue {
+      background-color: $blue-bg;
+    }
+    
+    &.dark-blue {
+      background-color: $dark-blue-bg;
+      color: white;
+      
+      h3 {
+        color: white;
+      }
+  }
+  
+  .mascot-image {
+    // position: absolute;÷
+    // bottom: -20px;
+    right: 0;
+    // height: 180px;
+    
+    @media (max-width: $breakpoint-small) {
+      height: 170px;
+    }
+  }
+  
+  .tutor-images {
+    position: relative;
+    
+    .teacher-image {
+      width: 120px;
+      height: auto;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .student-image {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 3px solid white;
+      position: absolute;
+      left: -20px;
+      bottom: -10px;
+      z-index: 3;
+    }
+  }
+  
+  .star-image {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .badge-image {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100px;
+    height: 100px;
+  }
+}
+
+// Card Body Styles
+.card-body {
+  padding: 24px;
+  
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: $text-dark;
+    margin-bottom: 16px;
+    
+    @media (max-width: $breakpoint-small) {
+      font-size: 20px;
+    }
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: $text-dark;
+    margin-bottom: 24px;
+  }
+  
+  .card-link {
+    display: inline-block;
+    color: $primary-blue;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    position: relative;
+    
+    .arrow-icon {
+      display: inline-block;
+      margin-left: 5px;
+      transition: transform 0.2s ease;
+    }
+    
+    &:hover {
+      text-decoration: underline;
+      
+      .arrow-icon {
+        transform: translateX(3px) translateY(-3px);
+      }
+    }
+  }
 }
