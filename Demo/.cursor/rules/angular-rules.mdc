@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+When generating Angular routes in app.routes.ts or app-routing.module.ts,
+always use `loadChildren` to lazy load a module instead of assigning a component directly.
+Do not use `component: SomeComponent` in route configs directly.
+If there’s no module, create one with the same name as the component.
