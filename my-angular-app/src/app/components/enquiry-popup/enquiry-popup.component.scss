@@ -1,0 +1,177 @@
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+
+  .popup-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #666;
+      cursor: pointer;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #333;
+      }
+    }
+
+    .popup-header {
+      text-align: center;
+      margin-bottom: 2rem;
+
+      h2 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        color: #666;
+        font-size: 0.9rem;
+      }
+    }
+
+    .enquiry-form {
+      .form-group {
+        margin-bottom: 1.5rem;
+
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+          color: #333;
+          font-size: 0.9rem;
+          font-weight: 500;
+        }
+
+        input {
+          width: 100%;
+          padding: 0.8rem;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 0.9rem;
+          transition: border-color 0.3s ease;
+
+          &::placeholder {
+            color: #999;
+          }
+
+          &:focus {
+            outline: none;
+            border-color: #0061fd;
+          }
+
+          &.error {
+            border-color: #dc3545;
+          }
+        }
+
+        .error-message {
+          color: #dc3545;
+          font-size: 0.8rem;
+          margin-top: 0.5rem;
+        }
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 1rem;
+        background-color: #0061fd;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: darken(#0061fd, 5%);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .popup-overlay {
+    padding: 15px;
+
+    .popup-content {
+      padding: 1.5rem;
+
+      .popup-header {
+        margin-bottom: 1.5rem;
+
+        h2 {
+          font-size: 1.3rem;
+        }
+      }
+
+      .enquiry-form {
+        .form-group {
+          margin-bottom: 1.2rem;
+
+          input {
+            padding: 0.7rem;
+          }
+        }
+
+        .submit-btn {
+          padding: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-overlay {
+    padding: 10px;
+
+    .popup-content {
+      padding: 1.2rem;
+
+      .close-btn {
+        top: 0.8rem;
+        right: 0.8rem;
+        font-size: 1.2rem;
+      }
+
+      .popup-header {
+        h2 {
+          font-size: 1.2rem;
+        }
+
+        p {
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+}

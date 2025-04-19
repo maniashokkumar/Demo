@@ -1,0 +1,150 @@
+.header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+  .logo {
+    a {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0061fd;
+      text-decoration: none;
+    }
+  }
+
+  .main-nav {
+    ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 1.5rem;
+
+      li {
+        a {
+          text-decoration: none;
+          color: #666;
+          font-size: 14px;
+          padding: 0.5rem 0;
+          
+          &.active {
+            color: #0061fd;
+            border-bottom: 2px solid #0061fd;
+          }
+
+          &:hover {
+            color: #0061fd;
+          }
+        }
+      }
+    }
+  }
+
+  .right-section {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    button {
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+
+      &.post-property {
+        background-color: #0061fd;
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .free-tag {
+          background-color: #00b300;
+          padding: 2px 6px;
+          border-radius: 3px;
+          font-size: 12px;
+        }
+      }
+
+      &.login {
+        background-color: transparent;
+        border: 1px solid #0061fd;
+        color: #0061fd;
+
+        &:hover {
+          background-color: #f0f7ff;
+        }
+      }
+    }
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    padding: 0.5rem;
+
+    &:hover {
+      color: #0061fd;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .header {
+    .main-nav {
+      display: none;
+    }
+
+    .right-section {
+      button.post-property {
+        .free-tag {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    .header-content {
+      padding: 0 15px;
+    }
+
+    .logo a {
+      font-size: 20px;
+    }
+
+    .right-section {
+      gap: 0.5rem;
+
+      button {
+        padding: 6px 12px;
+        font-size: 12px;
+
+        &.post-property {
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

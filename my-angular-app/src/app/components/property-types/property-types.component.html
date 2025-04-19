@@ -1,0 +1,24 @@
+<section class="property-types">
+  <div class="section-header">
+    <h2>Explore Properties by Type</h2>
+  </div>
+
+  <div class="property-cards">
+    <div class="property-card" *ngFor="let property of propertyTypes">
+      <div class="card-image">
+        <img [src]="property.image" [alt]="property.title">
+      </div>
+      <div class="card-content">
+        <h3>{{property.title}}</h3>
+        <p>{{property.count}} Properties</p>
+        <button class="enquiry-btn" (click)="openEnquiryPopup(property)">Enquiry Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-enquiry-popup 
+  *ngIf="showEnquiryPopup" 
+  [selectedProperty]="selectedProperty"
+  (close)="closeEnquiryPopup()">
+</app-enquiry-popup>
